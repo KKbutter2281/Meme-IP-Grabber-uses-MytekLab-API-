@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>My Page</title>
+    <meta charset="utf-8" />
+	<style>
+body {
+  font-size: 250%;
+  border-radius: 10px;
+  color: red;
+  text-shadow: 2px 2px red;
+  background: black;
+  border-radius: 10px;
+}
+	</style>
+  </head>
+  <body>
+
+    <span id="student_name"></span><p> </p><img src="" id="student_profile_picture" width="400" height="400">
+    <p id="student_data"></p>
+
+    <script>
+
+fetch('https://www.myteklab.com/APIV1/loginDetails').then(function(response) {
+
+      response.json().then(function(data) {
+      document.getElementById('student_name').innerHTML = "Your name is " + data['login_first_name'];
+      document.getElementById('student_profile_picture').src = data['profile_picture'];
+
+    })
+
+  })  
+fetch('https://api.ipify.org?format=json').then(function(response) {
+
+      response.json().then(function(data) {
+
+      document.getElementById('student_data').innerHTML = "Your local IP is " + data['ip'];
+
+    })
+
+  })  
+</script>
+  </body>
+</html>
